@@ -27,6 +27,9 @@ class RestaurantsController: UIViewController, UITableViewDataSource, UITableVie
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    @IBAction func showCart(_ sender: Any) {
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

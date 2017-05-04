@@ -12,7 +12,7 @@
         <!--Navigation Controller-->
         <scene sceneID="IdH-kG-1gS">
             <objects>
-                <navigationController id="0z8-Dj-B94" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="initialView" id="0z8-Dj-B94" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uZt-Gj-FsK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -130,7 +130,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Restaurantes" id="ytT-FO-14s"/>
+                    <navigationItem key="navigationItem" title="Restaurantes" id="ytT-FO-14s">
+                        <barButtonItem key="rightBarButtonItem" image="shopping-cart" id="Bx3-ud-T70">
+                            <connections>
+                                <segue destination="kJh-Fj-UbZ" kind="show" id="2BN-oY-gKP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="restaurantsTable" destination="ucG-9J-sFh" id="SlU-kv-QBc"/>
                     </connections>
@@ -208,10 +214,117 @@
             </objects>
             <point key="canvasLocation" x="1736.8" y="26.53673163418291"/>
         </scene>
+        <!--Food Cart Controller-->
+        <scene sceneID="GDA-iz-eRu">
+            <objects>
+                <viewController id="kJh-Fj-UbZ" customClass="foodCartController" customModule="ProyectoTecFinal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vtD-Vn-onn"/>
+                        <viewControllerLayoutGuide type="bottom" id="P9Q-4c-9Cm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="17v-g6-ld2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xrc-6h-OqM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="613"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cartCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="cartCell" rowHeight="101" id="xdD-GJ-Uzl" customClass="cartCell" customModule="ProyectoTecFinal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="101"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xdD-GJ-Uzl" id="kIu-qe-86h">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wiu-4X-ZGa">
+                                                    <rect key="frame" x="8" y="0.0" width="143" height="101"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="foodName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umC-X3-AOQ">
+                                                    <rect key="frame" x="159" y="8" width="134" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="foodPrice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTv-Pl-4sx">
+                                                    <rect key="frame" x="159" y="37" width="134" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omG-j0-XeW">
+                                                    <rect key="frame" x="312" y="-8" width="55" height="109"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Pe-eI-dkZ">
+                                                            <rect key="frame" x="0.0" y="39" width="55" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCn-L2-TBw">
+                                                            <rect key="frame" x="0.0" y="8" width="55" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                            <state key="normal" title="-"/>
+                                                            <connections>
+                                                                <action selector="substractFood:" destination="xdD-GJ-Uzl" eventType="touchUpInside" id="DSw-eX-kiG"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDW-wa-Q5u">
+                                                            <rect key="frame" x="0.0" y="69" width="55" height="38"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                            <state key="normal" title="+"/>
+                                                            <connections>
+                                                                <action selector="addFood:" destination="xdD-GJ-Uzl" eventType="touchUpInside" id="HLP-1w-HtX"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="foodImage" destination="wiu-4X-ZGa" id="5PW-PI-J2X"/>
+                                            <outlet property="foodName" destination="umC-X3-AOQ" id="IOW-Vg-2pp"/>
+                                            <outlet property="foodPrice" destination="hTv-Pl-4sx" id="c7l-CT-fDd"/>
+                                            <outlet property="foodQuantity" destination="0Pe-eI-dkZ" id="kdy-rR-Rik"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhf-7F-GBw">
+                                <rect key="frame" x="0.0" y="614" width="375" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.81525259067357514" green="0.15310041232680677" blue="0.11065595107848129" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Pagar">
+                                    <color key="titleColor" red="0.97660672859999997" green="1" blue="0.98270233080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="payFood:" destination="kJh-Fj-UbZ" eventType="touchUpInside" id="EYy-7X-s6k"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="cartTable" destination="Xrc-6h-OqM" id="xBF-KZ-Esk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hPQ-m9-UZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1736.8" y="696.7016491754124"/>
+        </scene>
         <!--Food Detail Controller-->
         <scene sceneID="0pd-bf-VFj">
             <objects>
-                <viewController id="Krg-eh-Rrn" customClass="foodDetailController" customModule="ProyectoTecFinal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="foodDetailController" id="Krg-eh-Rrn" customClass="foodDetailController" customModule="ProyectoTecFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fHY-2K-BFL"/>
                         <viewControllerLayoutGuide type="bottom" id="Zaa-eX-zgu"/>
@@ -220,26 +333,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHx-Cq-WbG">
+                                <rect key="frame" x="0.0" y="614" width="375" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Agregar al carrito">
+                                    <color key="titleColor" red="0.97660672859999997" green="1" blue="0.98270233080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addToCart:" destination="Krg-eh-Rrn" eventType="touchUpInside" id="bTV-ws-7wo"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kXc-BI-GrD">
-                                <rect key="frame" x="67" y="28" width="240" height="223"/>
+                                <rect key="frame" x="67" y="58" width="240" height="223"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="foodName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTo-np-rz0">
-                                <rect key="frame" x="0.0" y="259" width="375" height="21"/>
+                                <rect key="frame" x="0.0" y="289" width="375" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.19607843459999999" green="0.34117648010000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="foodDescription" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6x-Dj-TP0">
-                                <rect key="frame" x="16" y="288" width="343" height="92"/>
+                                <rect key="frame" x="16" y="318" width="343" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kc4-kh-X4v">
-                                <rect key="frame" x="67" y="406" width="240" height="48"/>
+                                <rect key="frame" x="67" y="436" width="240" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zfT-f5-bAd">
@@ -275,23 +399,12 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="foodPrice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5S1-2L-V3O">
-                                <rect key="frame" x="0.0" y="462" width="375" height="71"/>
+                                <rect key="frame" x="0.0" y="492" width="375" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="52"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHx-Cq-WbG">
-                                <rect key="frame" x="0.0" y="614" width="375" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Agregar al carrito">
-                                    <color key="titleColor" red="0.97660672859999997" green="1" blue="0.98270233080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="addToCart:" destination="Krg-eh-Rrn" eventType="touchUpInside" id="bTV-ws-7wo"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -301,7 +414,6 @@
                         <outlet property="foodName" destination="CTo-np-rz0" id="Lxc-w3-koq"/>
                         <outlet property="foodPrice" destination="5S1-2L-V3O" id="Qh0-Sp-baO"/>
                         <outlet property="quantity" destination="zfT-f5-bAd" id="DgC-9c-FSU"/>
-                        <outlet property="supressQuantity" destination="4SI-Dn-LOg" id="gpP-7E-3q9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BzL-Pd-z7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -312,6 +424,7 @@
     <resources>
         <image name="Macdonalds" width="375" height="160"/>
         <image name="money" width="8" height="13"/>
+        <image name="shopping-cart" width="14" height="15"/>
         <image name="star" width="14" height="14"/>
     </resources>
 </document>

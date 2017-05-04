@@ -58,7 +58,17 @@ class foodsController: UIViewController, UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        let details = storyboard?.instantiateViewController(withIdentifier: "foodDetailController") as! foodDetailController
+        let foodDetails = foodsList?[indexPath.row] as! NSDictionary
+        
+        details.price = "Q"+String(format: "%i", foodDetails.object(forKey: "price") as! Int)
+        details.name = foodDetails.object(forKey: "name") as? String
+        details.desc = foodDetails.object(forKey: "description") as? String
+        details.image = foodDetails.object(forKey: "image") as? String
+        details.id = foodDetails.object(forKey: "_id") as? String
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        self.navigationController?.pushViewController(details, animated: true)
     }
    
     func loadDataFromApi(url: String) -> Void {
