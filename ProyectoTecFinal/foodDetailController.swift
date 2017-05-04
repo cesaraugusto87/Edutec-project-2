@@ -61,7 +61,7 @@ class foodDetailController: UIViewController {
         
         do {
             try context.save()
-            let alertController = UIAlertController(title: "Se agrego tu pedido al carrito", message: "Puedes revisar tu pedido antes de comprar haciendo click en tu carrito en la parte superior.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Se agrego tu pedido al carrito", message: "Puedes revisar tu pedido antes de pagar accediendo a tu carrito en la parte superior.", preferredStyle: .alert)
             self.present(alertController, animated: true, completion: nil)
             let okAction = UIAlertAction(title:"Ok",style: .default) {(action:UIAlertAction) in
                  _ = self.navigationController?.popToRootViewController(animated: true)

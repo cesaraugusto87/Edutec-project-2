@@ -132,6 +132,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Restaurantes" id="ytT-FO-14s">
                         <barButtonItem key="rightBarButtonItem" image="shopping-cart" id="Bx3-ud-T70">
+                            <color key="tintColor" red="0.97660672859999997" green="1" blue="0.98270233080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="kJh-Fj-UbZ" kind="show" id="2BN-oY-gKP"/>
                             </connections>

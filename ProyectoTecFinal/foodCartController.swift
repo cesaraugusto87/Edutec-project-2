@@ -22,31 +22,56 @@ class foodCartController: UIViewController, UITableViewDelegate, UITableViewData
         cartTable?.dataSource = self
         cartTable?.delegate = self
         getData()
+        
     }
 
     
     @IBAction func payFood(_ sender: Any) {
-        let context = getContext()
         
-        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "FoodCart")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        if(cartItems.count > 0){
+    
+        var totalQuantity = 0
+        var totalPrice = 0
         
-        do {
-            try context.execute(deleteRequest)
-            try context.save()
-        } catch {
-            print ("Error al eliminar")
+        for foods in cartItems  as [NSManagedObject] {
+            totalQuantity = totalQuantity + (foods.value(forKey: "foodQuantity") as? Int)!
+            totalPrice = totalPrice + ((foods.value(forKey: "foodPrice") as? Int)! * (foods.value(forKey: "foodQuantity") as? Int)!)
         }
-
-        
-        let alertController = UIAlertController(title: "Pedido Completado", message: "Gracias por ordenar comida con nosotros.", preferredStyle: .alert)
-            self.present(alertController, animated: true, completion: nil)
+        let alertController = UIAlertController(title: "Resumen de compra", message: "Su pedido es de \(totalQuantity) Hamburgesas por un total de Q\(totalPrice) ¿Desea continuar con su pago?", preferredStyle: .alert)
+        self.present(alertController, animated: true, completion: nil)
         let okAction = UIAlertAction(title:"Ok",style: .default) {(action:UIAlertAction) in
-            _ = self.navigationController?.popToRootViewController(animated: true)
+            let context = self.getContext()
+            
+            let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "FoodCart")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+            
+            do {
+                try context.execute(deleteRequest)
+                try context.save()
+            } catch {
+                print ("Error al eliminar")
+            }
+            let alertController = UIAlertController(title: "Pedido Completado", message: "Gracias por ordenar comida con nosotros.", preferredStyle: .alert)
+            self.present(alertController, animated: true, completion: nil)
+            let okAction = UIAlertAction(title:"Ok",style: .default) {(action:UIAlertAction) in
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            }
+            alertController.addAction(okAction)
         }
+        let cancelAction = UIAlertAction(title:"Cancelar",style: .default) {(action:UIAlertAction) in
+            }
+            
+    
         alertController.addAction(okAction)
-
-        
+        alertController.addAction(cancelAction)
+        }else{
+            let alertController = UIAlertController(title: "No hay items en su carrito", message: "Debe agregar items para poder proceder a pagar.", preferredStyle: .alert)
+            self.present(alertController, animated: true, completion: nil)
+            let okAction = UIAlertAction(title:"Ok",style: .default) {(action:UIAlertAction) in
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            }
+            alertController.addAction(okAction)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
