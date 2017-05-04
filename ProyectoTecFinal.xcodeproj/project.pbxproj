@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		303E67DC1EBAB30800EEC07B /* foodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303E67DB1EBAB30800EEC07B /* foodsCell.swift */; };
+		303E67DE1EBAB48800EEC07B /* foodsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303E67DD1EBAB48800EEC07B /* foodsController.swift */; };
+		303E67E01EBAC16500EEC07B /* foodDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303E67DF1EBAC16500EEC07B /* foodDetailController.swift */; };
 		30556C311EB1752C0077114F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30556C301EB1752C0077114F /* AppDelegate.swift */; };
 		30556C331EB1752C0077114F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30556C321EB1752C0077114F /* ViewController.swift */; };
 		30556C361EB1752C0077114F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30556C341EB1752C0077114F /* Main.storyboard */; };
@@ -19,6 +22,9 @@
 
 /* Begin PBXFileReference section */
 		1EC443D3E5440937370F8344 /* Pods_ProyectoTecFinal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProyectoTecFinal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		303E67DB1EBAB30800EEC07B /* foodsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foodsCell.swift; sourceTree = "<group>"; };
+		303E67DD1EBAB48800EEC07B /* foodsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foodsController.swift; sourceTree = "<group>"; };
+		303E67DF1EBAC16500EEC07B /* foodDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foodDetailController.swift; sourceTree = "<group>"; };
 		30556C2D1EB1752C0077114F /* ProyectoTecFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProyectoTecFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30556C301EB1752C0077114F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30556C321EB1752C0077114F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				30556C321EB1752C0077114F /* ViewController.swift */,
+				303E67DD1EBAB48800EEC07B /* foodsController.swift */,
+				303E67DF1EBAC16500EEC07B /* foodDetailController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -89,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				30556C471EB17C690077114F /* restaurantsCell.swift */,
+				303E67DB1EBAB30800EEC07B /* foodsCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -235,9 +244,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				30556C481EB17C690077114F /* restaurantsCell.swift in Sources */,
+				303E67E01EBAC16500EEC07B /* foodDetailController.swift in Sources */,
 				30556C331EB1752C0077114F /* ViewController.swift in Sources */,
 				30556C391EB1752C0077114F /* ProyectoTecFinal.xcdatamodeld in Sources */,
+				303E67DC1EBAB30800EEC07B /* foodsCell.swift in Sources */,
 				30556C311EB1752C0077114F /* AppDelegate.swift in Sources */,
+				303E67DE1EBAB48800EEC07B /* foodsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

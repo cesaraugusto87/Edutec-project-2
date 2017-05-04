@@ -41,26 +41,29 @@ class RestaurantsController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let details = storyboard?.instantiateViewController(withIdentifier: "foodsController") as! foodsController
+        let restaurantId = restaurantsList?[indexPath.row] as! NSDictionary
         
+        details.restaurantId = restaurantId.object(forKey: "_id") as? String
+        
+        tableView.deselectRow(at: indexPath, animated: false)
+        self.navigationController?.pushViewController(details, animated: true)
     }
     
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "restaurantsCell", for: indexPath) as! restaurantsCellController
     
-    let restaurantInfo = restaurantsList?[indexPath.row]
+    let restaurant = (restaurantsList?[indexPath.row]) as! NSDictionary
     
-    
-    print(restaurantInfo)
-    
-  /*  let urlImage: String = restaurantInfo["image"].stringValue
+    let urlImage: String = restaurant.object(forKey: "image") as! String
     
     cell.restaurantImage?.af_setImage(withURL: URL(string: urlImage)!)
     
-    cell.name?.text = restaurantInfo["name"].string
-    cell.restaurantInfo?.text = restaurantInfo["description"].string
+    cell.name?.text = restaurant.object(forKey: "name") as? String
+    cell.restaurantInfo?.text = restaurant.object(forKey: "slug") as? String
     
-    let starCount: Int = (restaurantInfo["stars"].int)!
-    let priceCount: Int = (restaurantInfo["price"].int)!
+    let starCount: Int = (restaurant.object(forKey: "stars") as! Int)
+    let priceCount: Int = (restaurant.object(forKey: "price") as! Int)
     
     cell.star1?.isHidden = true
     cell.star2?.isHidden = true
@@ -107,7 +110,7 @@ class RestaurantsController: UIViewController, UITableViewDataSource, UITableVie
             cell.money5?.isHidden = false
         }
     }
-    */
+    
         return cell
     }
 
